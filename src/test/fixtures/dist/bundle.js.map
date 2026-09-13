@@ -1,0 +1,13 @@
+{
+  "version": 3,
+  "file": "bundle.js",
+  "names": [],
+  "sources": [
+    "src/app.ts"
+  ],
+  "sourcesContent": [
+    "export function ready() { return true; }\nexport function boom() { throw new Error(\"boom\"); }\n"
+  ],
+  "mappings": "AAAA,4BACA",
+  "ignoreList": []
+}
