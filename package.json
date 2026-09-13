@@ -8,6 +8,7 @@
     "vscode": "^1.95.0"
   },
   "categories": [
+    "Debuggers",
     "Other"
   ],
   "activationEvents": [],
@@ -105,5 +106,16 @@
   "galleryBanner": {
     "color": "#1F2937",
     "theme": "dark"
+  },
+  "keywords": [
+    "stack-trace",
+    "sourcemap",
+    "debugging",
+    "error",
+    "production"
+  ],
+  "homepage": "https://github.com/bobrowsse-tech/stack-trace-resolver#readme",
+  "bugs": {
+    "url": "https://github.com/bobrowsse-tech/stack-trace-resolver/issues"
   }
 }
