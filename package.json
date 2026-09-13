@@ -100,5 +100,10 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/bobrowsse-tech/stack-trace-resolver"
+  },
+  "icon": "images/icon.png",
+  "galleryBanner": {
+    "color": "#1F2937",
+    "theme": "dark"
   }
 }
