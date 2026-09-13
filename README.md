@@ -1,16 +1,23 @@
 # Reverse Stack-Trace Lookup
 
-Pastes a production stack trace and jumps straight to the real source line, even through minification and past commits.
+Paste a production stack trace and jump to real source — through sourcemaps and, when a build id is present, as of the matching git commit.
 
-## Status
+1. **Paste Trace** — V8/JS, Python, or Java formats.
+2. **Resolve** — sourcemap resolution for JS; direct for Python/Java; explicit unresolved markers when no map exists.
+3. **Jump to Commit** — opens the frame at the embedded SHA when that commit exists locally; otherwise falls back to HEAD with a clear note.
 
-Scaffold generated. Core logic is not yet implemented — see `DIRECTIVE.md` for the full build plan.
+Agents can call `resolve_stack_trace` with the raw trace text (report-only).
 
 ## Development
 
 ```bash
 npm install
-npm run watch    # esbuild + tsc in watch mode
+npm run watch
+npm run test:unit
 ```
 
-Then press `F5` in VS Code to launch an Extension Development Host.
+Press `F5` in VS Code to launch an Extension Development Host.
+
+## License
+
+MIT
