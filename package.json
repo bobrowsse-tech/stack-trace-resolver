@@ -1,0 +1,102 @@
+{
+  "name": "stack-trace-resolver",
+  "displayName": "Reverse Stack-Trace Lookup",
+  "description": "Pastes a production stack trace and jumps straight to the real source line, even through minification and past commits.",
+  "version": "0.1.0",
+  "publisher": "bobrowsse-tech",
+  "engines": {
+    "vscode": "^1.95.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "stack-trace-resolverContainer",
+          "title": "Reverse Stack-Trace Lookup",
+          "icon": "$(debug)"
+        }
+      ]
+    },
+    "views": {
+      "stack-trace-resolverContainer": [
+        {
+          "id": "stack-trace-resolverView",
+          "name": "Dashboard",
+          "type": "webview"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "stackTrace.paste",
+        "title": "Reverse Stack-Trace Lookup: Paste Trace"
+      },
+      {
+        "command": "stackTrace.resolve",
+        "title": "Reverse Stack-Trace Lookup: Resolve"
+      },
+      {
+        "command": "stackTrace.jumpToCommit",
+        "title": "Reverse Stack-Trace Lookup: Jump to Commit"
+      }
+    ],
+    "languageModelTools": [
+      {
+        "name": "resolve_stack_trace",
+        "tags": [
+          "stack-trace-resolver"
+        ],
+        "toolReferenceName": "resolve_stack_trace",
+        "displayName": "Reverse Stack-Trace Lookup — resolve_stack_trace",
+        "modelDescription": "Resolves a pasted stack trace's frames to real source locations using the matching sourcemaps, and to a specific git commit if a build identifier is present. Use this when the user pastes an error or stack trace and asks where it's coming from.",
+        "canBeReferencedInPrompt": true,
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "trace": {
+              "type": "string",
+              "description": "The raw stack trace text to resolve."
+            }
+          },
+          "required": [
+            "trace"
+          ]
+        }
+      }
+    ]
+  },
+  "scripts": {
+    "compile": "npm run check-types && node esbuild.js",
+    "check-types": "tsc --noEmit",
+    "watch": "npm-run-all -p watch:*",
+    "watch:esbuild": "node esbuild.js --watch",
+    "watch:tsc": "tsc --noEmit --watch --project tsconfig.json",
+    "vscode:prepublish": "npm run package",
+    "package": "npm run check-types && node esbuild.js --production",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.95.0",
+    "@types/node": "^20.0.0",
+    "@vscode/test-cli": "^0.0.10",
+    "@vscode/test-electron": "^2.4.0",
+    "esbuild": "^0.24.0",
+    "npm-run-all": "^4.1.5",
+    "typescript": "^5.6.0"
+  },
+  "dependencies": {
+    "@jridgewell/trace-mapping": "latest",
+    "stacktrace-parser": "latest",
+    "simple-git": "latest"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bobrowsse-tech/stack-trace-resolver"
+  }
+}
