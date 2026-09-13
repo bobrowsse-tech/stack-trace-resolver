@@ -13,7 +13,7 @@ export class DashboardProvider implements vscode.WebviewViewProvider {
   private report?: ResolveReport;
   private selectHandler?: (index: number) => void;
 
-  constructor(private readonly extensionUri: vscode.Uri) {}
+  constructor() {}
 
   onSelectFrame(handler: (index: number) => void) {
     this.selectHandler = handler;

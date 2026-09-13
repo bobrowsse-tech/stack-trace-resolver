@@ -29,7 +29,7 @@ function createService(): StackTraceService | undefined {
 }
 
 export function activate(context: vscode.ExtensionContext) {
-  const dashboard = new DashboardProvider(context.extensionUri);
+  const dashboard = new DashboardProvider();
   context.subscriptions.push(
     vscode.window.registerWebviewViewProvider('stack-trace-resolverView', dashboard)
   );
